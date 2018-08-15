@@ -21,6 +21,12 @@
 		DA4380E821242DF100C8128D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380E721242DF100C8128D /* Constants.swift */; };
 		DA4380EA2124431400C8128D /* TraitsInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380E92124431400C8128D /* TraitsInterpreter.swift */; };
 		DA4380EC2124449400C8128D /* Demo.md in Resources */ = {isa = PBXBuildFile; fileRef = DA4380EB2124449400C8128D /* Demo.md */; };
+		DA77DF3921245DC600019C02 /* InterpreterCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA77DF3821245DC600019C02 /* InterpreterCharacter.swift */; };
+		DAED61B621245788000E7635 /* InterpreterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B521245788000E7635 /* InterpreterProtocol.swift */; };
+		DAED61B82124588F000E7635 /* StackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B72124588F000E7635 /* StackItem.swift */; };
+		DAED61BA212458F0000E7635 /* BoldInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B9212458F0000E7635 /* BoldInterpreter.swift */; };
+		DAED61BC212459A5000E7635 /* ItalicsInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61BB212459A5000E7635 /* ItalicsInterpreter.swift */; };
+		DAED61BE21245BF0000E7635 /* PlainInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61BD21245BF0000E7635 /* PlainInterpreter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +67,12 @@
 		DA4380E721242DF100C8128D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA4380E92124431400C8128D /* TraitsInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitsInterpreter.swift; sourceTree = "<group>"; };
 		DA4380EB2124449400C8128D /* Demo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Demo.md; sourceTree = "<group>"; };
+		DA77DF3821245DC600019C02 /* InterpreterCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterpreterCharacter.swift; sourceTree = "<group>"; };
+		DAED61B521245788000E7635 /* InterpreterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterpreterProtocol.swift; sourceTree = "<group>"; };
+		DAED61B72124588F000E7635 /* StackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackItem.swift; sourceTree = "<group>"; };
+		DAED61B9212458F0000E7635 /* BoldInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldInterpreter.swift; sourceTree = "<group>"; };
+		DAED61BB212459A5000E7635 /* ItalicsInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItalicsInterpreter.swift; sourceTree = "<group>"; };
+		DAED61BD21245BF0000E7635 /* PlainInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainInterpreter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +125,12 @@
 			children = (
 				DA1FB5322124033E002291C8 /* Parser.swift */,
 				DA4380DB2124075E00C8128D /* Implementation.swift */,
+				DAED61B521245788000E7635 /* InterpreterProtocol.swift */,
+				DAED61B9212458F0000E7635 /* BoldInterpreter.swift */,
+				DAED61BD21245BF0000E7635 /* PlainInterpreter.swift */,
+				DAED61BB212459A5000E7635 /* ItalicsInterpreter.swift */,
+				DAED61B72124588F000E7635 /* StackItem.swift */,
+				DA77DF3821245DC600019C02 /* InterpreterCharacter.swift */,
 				DA4380E521242C3800C8128D /* Cleaner.swift */,
 				DA4380DD21240D6600C8128D /* Interpreter.swift */,
 				DA4380E92124431400C8128D /* TraitsInterpreter.swift */,
@@ -266,8 +284,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA4380DE21240D6600C8128D /* Interpreter.swift in Sources */,
+				DAED61B82124588F000E7635 /* StackItem.swift in Sources */,
+				DA77DF3921245DC600019C02 /* InterpreterCharacter.swift in Sources */,
+				DAED61B621245788000E7635 /* InterpreterProtocol.swift in Sources */,
 				DA4380E621242C3800C8128D /* Cleaner.swift in Sources */,
 				DA4380DA2124073800C8128D /* Factory.swift in Sources */,
+				DAED61BE21245BF0000E7635 /* PlainInterpreter.swift in Sources */,
+				DAED61BA212458F0000E7635 /* BoldInterpreter.swift in Sources */,
+				DAED61BC212459A5000E7635 /* ItalicsInterpreter.swift in Sources */,
 				DA4380DC2124075E00C8128D /* Implementation.swift in Sources */,
 				DA1FB5332124033E002291C8 /* Parser.swift in Sources */,
 				DA4380EA2124431400C8128D /* TraitsInterpreter.swift in Sources */,

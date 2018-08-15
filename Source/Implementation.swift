@@ -2,10 +2,12 @@ import UIKit
 
 class Implementation:Parser {
     var font:UIFont
+    private let interpreters:[InterpreterProtocol]
     private let cleaner:Cleaner
     private let queue:DispatchQueue
     
     init() {
+        self.interpreters = [BoldInterpreter(), ItalicsInterpreter()]
         self.cleaner = Cleaner()
         self.font = UIFont.systemFont(ofSize:ParseConstants.font, weight:UIFont.Weight.regular)
         self.queue = DispatchQueue(label:ParseConstants.identifier, qos:DispatchQoS.background,
@@ -15,15 +17,60 @@ class Implementation:Parser {
     }
     
     func parse(string:String, result:@escaping((NSAttributedString) -> Void)) {
-        let font:UIFont = self.font
+        let stack:[StackItem] = [StackItem(interpreter:PlainInterpreter(), font:self.font)]
         self.queue.async { [weak self] in
             guard
                 let cleaned:String = self?.cleaner.clean(string:string),
-                let parsed:NSAttributedString = self?.parse(string:cleaned, attributes:[
-                    NSAttributedString.Key.font:font])
+                let parsed:NSAttributedString = self?.parse(string:cleaned, stack:stack)
             else { return }
             DispatchQueue.main.async { result(parsed) }
         }
+    }
+    
+    private func parse(string:String, stack:[StackItem]) -> NSAttributedString {
+        print("\nstring:\(string)\nstack:\(stack)\n")
+        
+        var stack:[StackItem] = stack
+        if let character:InterpreterCharacter = self.next(string:string) {
+            if character == stack.last {
+                stack.removeLast()
+                
+            } else {
+                let mutable:NSMutableAttributedString = NSMutableAttributedString()
+                let prefix:String = String(string.prefix(upTo:closest!.lowerBound))
+                if !prefix.isEmpty {
+                    mutable.append(NSAttributedString(string:prefix, attributes:attributes))
+                }
+                stack.append(next)
+                let suffix:String = String(string.suffix(from:closest!.upperBound))
+                mutable.append(self.parse(string:suffix, stack:stack, font:font))
+                return mutable
+            }
+        } else {
+            return NSAttributedString(string:string, attributes:[NSAttributedString.Key.font:stack.last!.font])
+        }
+    }
+    
+    private func next(string:String) -> InterpreterCharacter? {
+        var character:InterpreterCharacter?
+        self.interpreters.forEach { (item:InterpreterProtocol) in
+            guard let interpreterIndex:Range<String.Index> = self.next(string:string, interpreter:item) else { return }
+            if character == nil || (character != nil && interpreterIndex.lowerBound < character!.index.lowerBound) {
+                character = InterpreterCharacter(interpreter:item, index:interpreterIndex)
+            }
+        }
+        return character
+    }
+    
+    private func next(string:String, interpreter:InterpreterProtocol) -> Range<String.Index>? {
+        var index:Range<String.Index>?
+        interpreter.match.forEach { (item:String) in
+            guard let range:Range<String.Index> = string.range(of:item) else { return }
+            if index == nil || (index != nil && range.lowerBound < index!.lowerBound) {
+                index = range
+            }
+        }
+        return index
     }
     
     class func interpret(string:String, attributes:[NSAttributedString.Key:AnyObject]) -> NSAttributedString {

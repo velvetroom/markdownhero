@@ -176,4 +176,27 @@ class TestImplementationTraits:XCTestCase {
         }
         self.waitForExpectations(timeout:1.0, handler:nil)
     }
+    
+    func testParseMixed() {
+        let expect:XCTestExpectation = self.expectation(description:"Not returning")
+        let parser:Implementation = Implementation()
+        parser.parse(string:"**a*b***") { (result:NSAttributedString) in
+            XCTAssertEqual(result.string, "ab", "Failed to parse")
+            let fontA:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let fontB:UIFont? = result.attribute(NSAttributedString.Key.font, at:1, effectiveRange:nil) as? UIFont
+            XCTAssertNotNil(fontA, "Has no font A")
+            XCTAssertNotNil(fontB, "Has no font B")
+            if let parsedFontA:UIFont = fontA {
+                XCTAssertEqual(parsedFontA.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
+                    UIFontDescriptor.SymbolicTraits.traitBold)!.symbolicTraits, "Not bold")
+            }
+            if let parsedFontB:UIFont = fontB {
+                XCTAssertEqual(parsedFontB.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
+                    [UIFontDescriptor.SymbolicTraits.traitBold,
+                     UIFontDescriptor.SymbolicTraits.traitItalic])!.symbolicTraits, "Not italics bold")
+            }
+            expect.fulfill()
+        }
+        self.waitForExpectations(timeout:1.0, handler:nil)
+    }
 }

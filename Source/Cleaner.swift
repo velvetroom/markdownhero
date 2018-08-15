@@ -4,12 +4,13 @@ class Cleaner {
     private let table:[(String, String)]
     
     init() {
-        self.table = [(Constants.publicBoldUnderscore, String(Constants.bold)),
-                      (Constants.publicBoldStar, String(Constants.bold)),
-                      (Constants.publicItalicStar, String(Constants.italics)),
-                      (Constants.publicItalicUnderscore, String(Constants.italics)),
-                      ("\(Constants.bold)\(Constants.italics)", String(Constants.boldItalics)),
-                      ("\(Constants.italics)\(Constants.bold)", String(Constants.boldItalics))]
+//        self.table = [(Constants.publicBoldUnderscore, String(Constants.bold)),
+//                      (Constants.publicBoldStar, String(Constants.bold)),
+//                      (Constants.publicItalicStar, String(Constants.italics)),
+//                      (Constants.publicItalicUnderscore, String(Constants.italics)),
+//                      ("\(Constants.bold)\(Constants.italics)", String(Constants.boldItalics)),
+//                      ("\(Constants.italics)\(Constants.bold)", String(Constants.boldItalics))]
+        self.table = []
     }
     
     func clean(string:String) -> String {
