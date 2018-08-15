@@ -1,10 +1,6 @@
 import UIKit
 
 class Implementation:Parser {
-    static let interpreters:[Interpreter] = [TraitsInterpreter(character:Constants.bold, trait:
-        UIFontDescriptor.SymbolicTraits.traitBold), TraitsInterpreter(character:Constants.italics, trait:
-            UIFontDescriptor.SymbolicTraits.traitItalic), TraitsInterpreter(character:Constants.boldItalics, trait:
-                [UIFontDescriptor.SymbolicTraits.traitBold, UIFontDescriptor.SymbolicTraits.traitItalic])]
     var font:UIFont
     private let cleaner:Cleaner
     private let queue:DispatchQueue
@@ -42,6 +38,12 @@ class Implementation:Parser {
     private func parse(string:String, attributes:[NSAttributedString.Key:AnyObject]) -> NSAttributedString {
         return Implementation.interpret(string:string, attributes:attributes)
     }
+    
+    private static let interpreters:[Interpreter] = [
+        TraitsInterpreter(character:Constants.boldItalics, trait:[UIFontDescriptor.SymbolicTraits.traitBold,
+                                                                  UIFontDescriptor.SymbolicTraits.traitItalic]),
+        TraitsInterpreter(character:Constants.bold, trait:UIFontDescriptor.SymbolicTraits.traitBold),
+        TraitsInterpreter(character:Constants.italics, trait:UIFontDescriptor.SymbolicTraits.traitItalic)]
 }
 
 private struct ParseConstants {

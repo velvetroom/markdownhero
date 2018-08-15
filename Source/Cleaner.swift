@@ -16,7 +16,6 @@ class Cleaner {
         var cleaned:String = string
         self.table.forEach { (item:(String, String)) in
             cleaned = cleaned.replacingOccurrences(of:item.0, with:item.1)
-            print(cleaned)
         }
         return cleaned
     }

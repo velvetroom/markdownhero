@@ -1,7 +1,7 @@
 import Foundation
 
 public class Factory {
-    class func makeParser() -> Parser {
+    public class func makeParser() -> Parser {
         return Implementation()
     }
     

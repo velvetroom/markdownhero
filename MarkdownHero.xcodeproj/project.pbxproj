@@ -20,6 +20,7 @@
 		DA4380E621242C3800C8128D /* Cleaner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380E521242C3800C8128D /* Cleaner.swift */; };
 		DA4380E821242DF100C8128D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380E721242DF100C8128D /* Constants.swift */; };
 		DA4380EA2124431400C8128D /* TraitsInterpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380E92124431400C8128D /* TraitsInterpreter.swift */; };
+		DA4380EC2124449400C8128D /* Demo.md in Resources */ = {isa = PBXBuildFile; fileRef = DA4380EB2124449400C8128D /* Demo.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		DA4380E521242C3800C8128D /* Cleaner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cleaner.swift; sourceTree = "<group>"; };
 		DA4380E721242DF100C8128D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA4380E92124431400C8128D /* TraitsInterpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraitsInterpreter.swift; sourceTree = "<group>"; };
+		DA4380EB2124449400C8128D /* Demo.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Demo.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1FB53B212404CD002291C8 /* LaunchScreen.storyboard */,
+				DA4380EB2124449400C8128D /* Demo.md */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1FB53C212404CD002291C8 /* LaunchScreen.storyboard in Resources */,
+				DA4380EC2124449400C8128D /* Demo.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
