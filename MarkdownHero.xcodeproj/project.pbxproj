@@ -13,6 +13,9 @@
 		DA1FB539212404A2002291C8 /* libMarkdownHero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1FB52A2124019D002291C8 /* libMarkdownHero.a */; };
 		DA1FB53A212404A8002291C8 /* libMarkdownHero.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA1FB52A2124019D002291C8 /* libMarkdownHero.a */; };
 		DA1FB53C212404CD002291C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1FB53B212404CD002291C8 /* LaunchScreen.storyboard */; };
+		DA4380D8212406A000C8128D /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380D7212406A000C8128D /* Demo.swift */; };
+		DA4380DA2124073800C8128D /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380D92124073800C8128D /* Factory.swift */; };
+		DA4380DC2124075E00C8128D /* Implementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4380DB2124075E00C8128D /* Implementation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		DA1FB53421240360002291C8 /* TestImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestImplementation.swift; sourceTree = "<group>"; };
 		DA1FB53621240388002291C8 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		DA1FB53B212404CD002291C8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DA4380D7212406A000C8128D /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
+		DA4380D92124073800C8128D /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		DA4380DB2124075E00C8128D /* Implementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Implementation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1FB53621240388002291C8 /* Application.swift */,
+				DA4380D7212406A000C8128D /* Demo.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -94,6 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				DA1FB5322124033E002291C8 /* Parser.swift */,
+				DA4380DB2124075E00C8128D /* Implementation.swift */,
+				DA4380D92124073800C8128D /* Factory.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -240,6 +249,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4380DA2124073800C8128D /* Factory.swift in Sources */,
+				DA4380DC2124075E00C8128D /* Implementation.swift in Sources */,
 				DA1FB5332124033E002291C8 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4380D8212406A000C8128D /* Demo.swift in Sources */,
 				DA1FB53721240388002291C8 /* Application.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -469,7 +481,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iturbide.MarkdownHero.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.MarkdownHero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -486,7 +498,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = iturbide.MarkdownHero.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = iturbide.MarkdownHero;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
