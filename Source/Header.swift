@@ -15,7 +15,7 @@ class Header {
         return self.parse(string:string, items:self.items, nonHeader:nonHeader)
     }
     
-    func parse(string:String, items:[HeaderItem], nonHeader:((String) -> NSAttributedString)) -> NSAttributedString {
+    private func parse(string:String, items:[HeaderItem], nonHeader:((String) -> NSAttributedString)) -> NSAttributedString {
         if items.isEmpty {
             return nonHeader(string)
         }

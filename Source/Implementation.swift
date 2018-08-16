@@ -27,8 +27,12 @@ class Implementation:Parser {
     }
     
     func parse(string:String) -> NSAttributedString {
-        return Header(font:self.font).parse(string:string) { (nonHeader:String) -> NSAttributedString in
-            return self.traits(string:nonHeader, stack:Stack(font:self.font))
+        let scaping:Scaping = Scaping(font:self.font)
+        let header:Header = Header(font:self.font)
+        return scaping.parse(string:string) { (nonScaping:String) -> NSAttributedString in
+            header.parse(string:nonScaping) { (nonHeader:String) -> NSAttributedString in
+                return self.traits(string:nonHeader, stack:Stack(font:self.font))
+            }
         }
     }
     
