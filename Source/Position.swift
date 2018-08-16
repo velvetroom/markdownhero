@@ -1,8 +1,8 @@
 import Foundation
 
 struct Position {
-    var interpreter:Interpreter
-    var index:Range<String.Index>
+    let interpreter:Interpreter
+    let index:Range<String.Index>
     
     init(interpreter:Interpreter, index:Range<String.Index>) {
         self.interpreter = interpreter

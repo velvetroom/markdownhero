@@ -1,22 +1,18 @@
 import Foundation
 
 class Cleaner {
-    private let table:[(String, String)]
+    private let items:[CleanerItem]
     
     init() {
-//        self.table = [(Constants.publicBoldUnderscore, String(Constants.bold)),
-//                      (Constants.publicBoldStar, String(Constants.bold)),
-//                      (Constants.publicItalicStar, String(Constants.italics)),
-//                      (Constants.publicItalicUnderscore, String(Constants.italics)),
-//                      ("\(Constants.bold)\(Constants.italics)", String(Constants.boldItalics)),
-//                      ("\(Constants.italics)\(Constants.bold)", String(Constants.boldItalics))]
-        self.table = []
+        self.items = [CleanerItem(match:"  ", replace:" "), CleanerItem(match:"\n\n", replace:"\n")]
     }
     
     func clean(string:String) -> String {
         var cleaned:String = string
-        self.table.forEach { (item:(String, String)) in
-            cleaned = cleaned.replacingOccurrences(of:item.0, with:item.1)
+        self.items.forEach { (item:CleanerItem) in
+            while cleaned.contains(item.match) {
+                cleaned = cleaned.replacingOccurrences(of:item.match, with:item.replace)
+            }
         }
         return cleaned
     }
