@@ -1,13 +1,13 @@
 import UIKit
 
-class BoldInterpreter:InterpreterProtocol {
+class BoldInterpreter:Interpreter {
     let match:[String]
     
     init() {
         self.match = ["**", "__"]
     }
     
-    func attributes(original:[NSAttributedString.Key:AnyObject]) -> [NSAttributedString.Key:AnyObject] {
-        return self.update(original:original, traits:UIFontDescriptor.SymbolicTraits.traitBold)
+    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
+        return self.update(original:format, traits:Parser.Traits.traitBold)
     }
 }

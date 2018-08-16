@@ -1,13 +1,13 @@
 import UIKit
 
-class PlainInterpreter:InterpreterProtocol {
+class PlainInterpreter:Interpreter {
     let match:[String]
     
     init() {
         self.match = []
     }
     
-    func attributes(original:[NSAttributedString.Key:AnyObject]) -> [NSAttributedString.Key:AnyObject] {
-        return original
+    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
+        return format
     }
 }

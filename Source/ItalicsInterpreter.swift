@@ -1,13 +1,13 @@
 import UIKit
 
-class ItalicsInterpreter:InterpreterProtocol {
+class ItalicsInterpreter:Interpreter {
     let match:[String]
     
     init() {
-        self.match = ["*", "-"]
+        self.match = ["*", "_"]
     }
     
-    func attributes(original:[NSAttributedString.Key:AnyObject]) -> [NSAttributedString.Key:AnyObject] {
-        return self.update(original:original, traits:UIFontDescriptor.SymbolicTraits.traitItalic)
+    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
+        return self.update(original:format, traits:Parser.Traits.traitItalic)
     }
 }
