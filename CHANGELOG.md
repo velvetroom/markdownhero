@@ -1,5 +1,10 @@
 # Change log
 
+## Version 1.2
+
+- Update font
+- Add scaping support
+
 ## Version 1.1
 
 - Add interface to parse synchronously

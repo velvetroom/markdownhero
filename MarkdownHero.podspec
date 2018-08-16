@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'MarkdownHero'
-s.version          = '1.0.17'
+s.version          = '1.2.21'
 s.summary          = 'Parse markdown'
 s.description      = <<-DESC
 From markdown to attributed string

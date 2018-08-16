@@ -35,7 +35,7 @@ import MarkdownHero
 
 Make a parser
 ```
-let parser:Parser = Factory.makeParser()
+let parser:Parser = Parser()
 ```
 
 Let the magic begin
