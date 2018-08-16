@@ -18,10 +18,7 @@ class Implementation:Parser {
     
     func parse(string:String, result:@escaping((NSAttributedString) -> Void)) {
         self.queue.async { [weak self] in
-            guard
-                let cleaned:String = self?.cleaner.clean(string:string),
-                let parsed:NSAttributedString = self?.parse(string:cleaned)
-            else { return }
+            guard let parsed:NSAttributedString = self?.parse(string:string) else { return }
             DispatchQueue.main.async { result(parsed) }
         }
     }
@@ -30,7 +27,7 @@ class Implementation:Parser {
         let scaping:Scaping = Scaping(font:self.font)
         let header:Header = Header(font:self.font)
         return scaping.parse(string:string) { (nonScaping:String) -> NSAttributedString in
-            header.parse(string:nonScaping) { (nonHeader:String) -> NSAttributedString in
+            header.parse(string:self.cleaner.clean(string:nonScaping)) { (nonHeader:String) -> NSAttributedString in
                 return self.traits(string:nonHeader, stack:Stack(font:self.font))
             }
         }

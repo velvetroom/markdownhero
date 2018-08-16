@@ -12,3 +12,11 @@
 - First
 + Second
 * Third
+
+## Scaping or Code
+```
+- Plain
+- **Bold**
+- _Italics_
+- Plain, **bold, _bold italics_**
+```
