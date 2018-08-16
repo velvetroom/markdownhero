@@ -26,7 +26,7 @@ class Implementation:Parser {
         }
     }
     
-    private func parse(string:String) -> NSAttributedString {
+    func parse(string:String) -> NSAttributedString {
         return Header(font:self.font).parse(string:string) { (nonHeader:String) -> NSAttributedString in
             return self.traits(string:nonHeader, stack:Stack(font:self.font))
         }
