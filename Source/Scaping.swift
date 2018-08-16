@@ -14,7 +14,8 @@ class Scaping {
             if index % 2 == 0 {
                 mutable.append(nonScaped(components[index]))
             } else {
-                mutable.append(NSAttributedString(string:components[index], attributes:[Parser.Format.font:self.font]))
+                mutable.append(NSAttributedString(string:components[index], attributes:
+                    [NSAttributedStringKey.font:self.font]))
             }
         }
         return mutable

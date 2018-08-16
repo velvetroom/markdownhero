@@ -6,7 +6,7 @@ class TestItalics:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
         let decorated:String = "_\(text)_"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:decorated) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -24,7 +24,7 @@ class TestItalics:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
         let decorated:String = "*\(text)*"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:decorated) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
