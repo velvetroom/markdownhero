@@ -1,8 +1,8 @@
 import UIKit
 
 public protocol Parser {
-    typealias Format = NSAttributedString.Key
-    typealias Traits = UIFontDescriptor.SymbolicTraits
+    typealias Format = NSAttributedStringKey
+    typealias Traits = UIFontDescriptorSymbolicTraits
     var font:UIFont { get set }
     
     func parse(string:String) -> NSAttributedString
