@@ -4,7 +4,7 @@ class Cleaner {
     private let items:[CleanerItem]
     
     init() {
-        self.items = [CleanerItem(match:"  ", replace:" "), CleanerItem(match:"\n\n", replace:"\n")]
+        self.items = [CleanerItem(match:"  ", replace:" "), CleanerItem(match:"\n\n\n", replace:"\n\n")]
     }
     
     func clean(string:String) -> String {

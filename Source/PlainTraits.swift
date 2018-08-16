@@ -1,13 +1,13 @@
 import UIKit
 
-class BoldInterpreter:Interpreter {
+class PlainTraits:Traits {
     let match:[String]
     
     init() {
-        self.match = ["**", "__"]
+        self.match = []
     }
     
     func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
-        return self.update(original:format, traits:Parser.Traits.traitBold)
+        return format
     }
 }

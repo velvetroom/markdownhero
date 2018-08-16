@@ -8,7 +8,7 @@ class TestCleaner:XCTestCase {
     }
     
     func testCleanMultipleBlankLines() {
-        let cleaned:String = Cleaner().clean(string:"hello\n\n\n\nworld")
-        XCTAssertEqual(cleaned, "hello\nworld", "Not clean")
+        let cleaned:String = Cleaner().clean(string:"hello\n\n\nworld")
+        XCTAssertEqual(cleaned, "hello\n\nworld", "Not clean")
     }
 }
