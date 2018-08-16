@@ -8,7 +8,7 @@
       location = "group:Configuration">
    </FileRef>
    <FileRef
-      location = "group:CodableHero.podspec">
+      location = "group:/devel/iturbide/MarkdownHero/MarkdownHero.podspec">
    </FileRef>
    <FileRef
       location = "group:CHANGELOG.md">
