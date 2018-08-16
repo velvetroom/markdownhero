@@ -5,5 +5,6 @@ public protocol Parser {
     typealias Traits = UIFontDescriptorSymbolicTraits
     var font:UIFont { get set }
     
+    func parse(string:String) -> NSAttributedString
     func parse(string:String, result:@escaping((NSAttributedString) -> Void))
 }

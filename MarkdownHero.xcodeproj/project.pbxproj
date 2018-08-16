@@ -28,6 +28,8 @@
 		DAB309AC2125603B00A427D3 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB309AB2125603B00A427D3 /* Header.swift */; };
 		DAB309AE2125636800A427D3 /* HeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB309AD2125636800A427D3 /* HeaderItem.swift */; };
 		DAB309B02125661100A427D3 /* TestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB309AF2125661100A427D3 /* TestHeader.swift */; };
+		DACC8E3E212591C100729F7B /* TestsScaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC8E3D212591C100729F7B /* TestsScaping.swift */; };
+		DACC8E40212592A500729F7B /* Scaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC8E3F212592A500729F7B /* Scaping.swift */; };
 		DAED61B621245788000E7635 /* Traits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B521245788000E7635 /* Traits.swift */; };
 		DAED61B82124588F000E7635 /* StackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B72124588F000E7635 /* StackItem.swift */; };
 		DAED61BA212458F0000E7635 /* BoldTraits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B9212458F0000E7635 /* BoldTraits.swift */; };
@@ -80,6 +82,8 @@
 		DAB309AB2125603B00A427D3 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DAB309AD2125636800A427D3 /* HeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItem.swift; sourceTree = "<group>"; };
 		DAB309AF2125661100A427D3 /* TestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHeader.swift; sourceTree = "<group>"; };
+		DACC8E3D212591C100729F7B /* TestsScaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsScaping.swift; sourceTree = "<group>"; };
+		DACC8E3F212592A500729F7B /* Scaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scaping.swift; sourceTree = "<group>"; };
 		DAED61B521245788000E7635 /* Traits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traits.swift; sourceTree = "<group>"; };
 		DAED61B72124588F000E7635 /* StackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackItem.swift; sourceTree = "<group>"; };
 		DAED61B9212458F0000E7635 /* BoldTraits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoldTraits.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			children = (
 				DA1FB5322124033E002291C8 /* Parser.swift */,
 				DA4380DB2124075E00C8128D /* Implementation.swift */,
+				DACC8E3F212592A500729F7B /* Scaping.swift */,
 				DAB309AB2125603B00A427D3 /* Header.swift */,
 				DAB309AD2125636800A427D3 /* HeaderItem.swift */,
 				DAED61B521245788000E7635 /* Traits.swift */,
@@ -162,6 +167,7 @@
 				DA4156C021254947002CDE8A /* TestImplementation.swift */,
 				DA4156C421255B28002CDE8A /* TestCleaner.swift */,
 				DAB309AF2125661100A427D3 /* TestHeader.swift */,
+				DACC8E3D212591C100729F7B /* TestsScaping.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				DAED61BA212458F0000E7635 /* BoldTraits.swift in Sources */,
 				DAED61BC212459A5000E7635 /* ItalicsTraits.swift in Sources */,
 				DA4380DC2124075E00C8128D /* Implementation.swift in Sources */,
+				DACC8E40212592A500729F7B /* Scaping.swift in Sources */,
 				DA1FB5332124033E002291C8 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DACC8E3E212591C100729F7B /* TestsScaping.swift in Sources */,
 				DAB309B02125661100A427D3 /* TestHeader.swift in Sources */,
 				DA4156BD2125492F002CDE8A /* TestBold.swift in Sources */,
 				DA4156C521255B28002CDE8A /* TestCleaner.swift in Sources */,

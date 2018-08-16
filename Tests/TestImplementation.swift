@@ -69,4 +69,9 @@ class TestImplementation:XCTestCase {
         }
         self.waitForExpectations(timeout:1.0, handler:nil)
     }
+    
+    func testCleans() {
+        let parsed:NSAttributedString = Implementation().parse(string:"\n- hello\n- world")
+        XCTAssertEqual(parsed.string, "\n• hello\n• world")
+    }
 }
