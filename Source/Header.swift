@@ -28,7 +28,7 @@ class Header {
             mutable.append(self.parse(string:first, items:items, nonHeader:nonHeader))
         }
         for component:String in components {
-            if let index:String.Index = component.firstIndex(of:"\n") {
+            if let index:String.Index = component.index(of:"\n") {
                 mutable.append(self.head(item:item, string:String(component.prefix(upTo:index))))
                 mutable.append(
                     self.parse(string:String(component.suffix(from:index)), items:items, nonHeader:nonHeader))
@@ -40,7 +40,7 @@ class Header {
     }
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
-        return NSAttributedString(string:string, attributes:[NSAttributedString.Key.font:
+        return NSAttributedString(string:string, attributes:[NSAttributedStringKey.font:
             UIFont.systemFont(ofSize:self.font.pointSize + item.increment, weight:UIFont.Weight.heavy)])
     }
 }

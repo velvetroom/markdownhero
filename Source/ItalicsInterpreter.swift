@@ -8,6 +8,6 @@ class ItalicsInterpreter:Interpreter {
     }
     
     func update(font:UIFont) -> UIFont {
-        return self.update(font:font, traits:UIFontDescriptor.SymbolicTraits.traitItalic)
+        return self.update(font:font, traits:UIFontDescriptorSymbolicTraits.traitItalic)
     }
 }

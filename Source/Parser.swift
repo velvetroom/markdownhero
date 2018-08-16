@@ -35,7 +35,7 @@ public class Parser {
     
     private func traits(string:String, stack:Stack) -> NSAttributedString {
         let mutable:NSMutableAttributedString = NSMutableAttributedString()
-        let attributes:[NSAttributedString.Key:AnyObject] = [NSAttributedString.Key.font:stack.items.last!.font]
+        let attributes:[NSAttributedStringKey:AnyObject] = [NSAttributedStringKey.font:stack.items.last!.font]
         if let position:Position = self.next(string:string, stack:stack) {
             stack.add(interpreter:position.interpreter)
             mutable.append(NSAttributedString(string:String(string.prefix(upTo:position.index.lowerBound)),

@@ -15,7 +15,7 @@ class Scaping {
                 mutable.append(nonScaped(components[index]))
             } else {
                 mutable.append(NSAttributedString(string:components[index], attributes:
-                    [NSAttributedString.Key.font:self.font]))
+                    [NSAttributedStringKey.font:self.font]))
             }
         }
         return mutable
