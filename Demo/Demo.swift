@@ -24,7 +24,7 @@ class Demo:UIViewController {
         label.numberOfLines = 0
         self.label = label
         self.view.addSubview(label)
-        label.topAnchor.constraint(equalTo:self.view.topAnchor, constant:100.0).isActive = true
+        label.topAnchor.constraint(equalTo:self.view.topAnchor, constant:80.0).isActive = true
         label.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:20.0).isActive = true
         label.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:20.0).isActive = true
     }

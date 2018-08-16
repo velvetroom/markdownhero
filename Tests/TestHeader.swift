@@ -62,7 +62,7 @@ class TestHeader:XCTestCase {
     func testHeaderAndPlain() {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let parser:Implementation = Implementation()
-        parser.parse(string:"# hello world\norem ipsum") { (result:NSAttributedString) in
+        parser.parse(string:"# hello world\nlorem ipsum") { (result:NSAttributedString) in
             XCTAssertEqual(result.string, "hello world\nlorem ipsum", "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:13, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")

@@ -52,7 +52,7 @@ class Header {
 }
 
 private struct Constants {
-    static let h1:CGFloat = 4.0
-    static let h2:CGFloat = 3.0
-    static let h3:CGFloat = 2.0
+    static let h1:CGFloat = 12.0
+    static let h2:CGFloat = 8.0
+    static let h3:CGFloat = 4.0
 }
