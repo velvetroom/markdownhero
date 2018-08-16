@@ -57,9 +57,9 @@ class TestImplementation:XCTestCase {
             XCTAssertNotNil(fontA, "Has no font A")
             XCTAssertNotNil(fontB, "Has no font B")
             if let parsedFontA:UIFont = fontA {
-                XCTAssertEqual(parsedFontA.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
-                    [UIFontDescriptor.SymbolicTraits.traitBold,
-                     UIFontDescriptor.SymbolicTraits.traitItalic])!.symbolicTraits, "Not italics bold")
+                XCTAssertEqual(parsedFontA, UIFont(descriptor:UIFont.systemFont(ofSize:
+                    parser.font.pointSize, weight:UIFont.Weight.heavy).fontDescriptor.withSymbolicTraits(
+                        UIFontDescriptor.SymbolicTraits.traitItalic)!, size:parser.font.pointSize), "Not italics bold")
             }
             if let parsedFontB:UIFont = fontB {
                 XCTAssertEqual(parsedFontB.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.symbolicTraits,

@@ -11,7 +11,7 @@ public class Parser {
     public init() {
         self.traits = [BoldInterpreter(), ItalicsInterpreter()]
         self.cleaner = Cleaner()
-        self.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.regular)
+        self.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.ultraLight)
         self.queue = DispatchQueue(label:Constants.identifier, qos:DispatchQoS.background,
                                    attributes:DispatchQueue.Attributes.concurrent,
                                    autoreleaseFrequency:DispatchQueue.AutoreleaseFrequency.inherit,
@@ -37,7 +37,7 @@ public class Parser {
     
     private func traits(string:String, stack:Stack) -> NSAttributedString {
         let mutable:NSMutableAttributedString = NSMutableAttributedString()
-        let attributes:[Parser.Format:AnyObject] = stack.items.last!.format
+        let attributes:[Parser.Format:AnyObject] = [Parser.Format.font:stack.items.last!.font]
         if let position:Position = self.next(string:string, stack:stack) {
             stack.add(interpreter:position.interpreter)
             mutable.append(NSAttributedString(string:String(string.prefix(upTo:position.index.lowerBound)),

@@ -7,7 +7,5 @@ class PlainInterpreter:Interpreter {
         self.match = []
     }
     
-    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
-        return format
-    }
+    func update(font:UIFont) -> UIFont { return font }
 }

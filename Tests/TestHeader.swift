@@ -12,8 +12,6 @@ class TestHeader:XCTestCase {
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
             if let parsedFont:UIFont = font {
-                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
-                    UIFontDescriptor.SymbolicTraits.traitBold)!.symbolicTraits, "Not bold")
                 XCTAssertGreaterThan(parsedFont.pointSize, parser.font.pointSize, "Font not bigger")
             }
             expect.fulfill()
@@ -31,8 +29,6 @@ class TestHeader:XCTestCase {
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
             if let parsedFont:UIFont = font {
-                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
-                    UIFontDescriptor.SymbolicTraits.traitBold)!.symbolicTraits, "Not bold")
                 XCTAssertGreaterThan(parsedFont.pointSize, parser.font.pointSize, "Font not bigger")
             }
             expect.fulfill()
@@ -50,8 +46,6 @@ class TestHeader:XCTestCase {
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
             if let parsedFont:UIFont = font {
-                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
-                    UIFontDescriptor.SymbolicTraits.traitBold)!.symbolicTraits, "Not bold")
                 XCTAssertGreaterThan(parsedFont.pointSize, parser.font.pointSize, "Font not bigger")
             }
             expect.fulfill()

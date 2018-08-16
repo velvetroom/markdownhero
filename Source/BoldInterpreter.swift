@@ -7,7 +7,8 @@ class BoldInterpreter:Interpreter {
         self.match = ["**", "__"]
     }
     
-    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
-        return self.update(original:format, traits:Parser.Traits.traitBold)
+    func update(font:UIFont) -> UIFont {
+        return self.update(font:UIFont.systemFont(ofSize:font.pointSize, weight:UIFont.Weight.heavy),
+                           traits:font.fontDescriptor.symbolicTraits)
     }
 }

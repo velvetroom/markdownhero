@@ -3,19 +3,12 @@ import UIKit
 protocol Interpreter:AnyObject {
     var match:[String] { get }
     
-    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject]
+    func update(font:UIFont) -> UIFont
 }
 
 extension Interpreter {
-    func update(original:[Parser.Format:AnyObject], traits:Parser.Traits) -> [Parser.Format:AnyObject] {
-        guard
-            let font:UIFont = original[Parser.Format.font] as? UIFont,
-            let descriptor:UIFontDescriptor = font.fontDescriptor.withSymbolicTraits(
-                [font.fontDescriptor.symbolicTraits, traits])
-        else { return original }
-        let newFont:UIFont = UIFont(descriptor:descriptor, size:font.pointSize)
-        var updated:[Parser.Format:AnyObject] = original
-        updated[Parser.Format.font] = newFont
-        return updated
+    func update(font:UIFont, traits:Parser.Traits) -> UIFont {
+        guard let descriptor:UIFontDescriptor = font.fontDescriptor.withSymbolicTraits(traits) else { return font }
+        return UIFont(descriptor:descriptor, size:font.pointSize)
     }
 }

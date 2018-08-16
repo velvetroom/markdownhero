@@ -40,19 +40,13 @@ class Header {
     }
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
-        let font:UIFont
-        if let descriptor:UIFontDescriptor = self.font.fontDescriptor.withSymbolicTraits(
-            [self.font.fontDescriptor.symbolicTraits, Parser.Traits.traitBold]) {
-            font = UIFont(descriptor:descriptor, size:self.font.pointSize + item.increment)
-        } else {
-            font = self.font
-        }
-        return NSAttributedString(string:string, attributes:[Parser.Format.font:font])
+        return NSAttributedString(string:string, attributes:[Parser.Format.font:
+            UIFont.systemFont(ofSize:self.font.pointSize + item.increment, weight:UIFont.Weight.heavy)])
     }
 }
 
 private struct Constants {
-    static let h1:CGFloat = 12.0
-    static let h2:CGFloat = 8.0
+    static let h1:CGFloat = 15.0
+    static let h2:CGFloat = 10.0
     static let h3:CGFloat = 4.0
 }

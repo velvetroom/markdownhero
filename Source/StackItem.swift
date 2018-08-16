@@ -1,11 +1,11 @@
-import Foundation
+import UIKit
 
 struct StackItem {
     let interpreter:Interpreter
-    let format:[Parser.Format:AnyObject]
+    let font:UIFont
     
-    init(interpreter:Interpreter, format:[Parser.Format:AnyObject]) {
+    init(interpreter:Interpreter, font:UIFont) {
         self.interpreter = interpreter
-        self.format = format
+        self.font = font
     }
 }

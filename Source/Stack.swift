@@ -4,7 +4,7 @@ class Stack {
     var items:[StackItem]
     
     init(font:UIFont) {
-        self.items = [StackItem(interpreter:PlainInterpreter(), format:[Parser.Format.font:font])]
+        self.items = [StackItem(interpreter:PlainInterpreter(), font:font)]
     }
     
     func canBeNext(interpreter:Interpreter) -> Bool {
@@ -20,8 +20,7 @@ class Stack {
         if interpreter === self.items.last!.interpreter {
             self.items.removeLast()
         } else {
-            self.items.append(StackItem(interpreter:interpreter, format:
-                interpreter.update(format:self.items.last!.format)))
+            self.items.append(StackItem(interpreter:interpreter, font:interpreter.update(font:self.items.last!.font)))
         }
     }
 }

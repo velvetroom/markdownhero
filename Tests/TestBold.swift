@@ -12,8 +12,8 @@ class TestBold:XCTestCase {
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
             if let parsedFont:UIFont = font {
-                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
-                    UIFontDescriptor.SymbolicTraits.traitBold)!.symbolicTraits, "Not bold")
+                XCTAssertEqual(UIFont.systemFont(ofSize:parser.font.pointSize, weight:UIFont.Weight.heavy), parsedFont,
+                               "Not bold")
             }
             expect.fulfill()
         }
@@ -30,8 +30,8 @@ class TestBold:XCTestCase {
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
             if let parsedFont:UIFont = font {
-                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.withSymbolicTraits(
-                    UIFontDescriptor.SymbolicTraits.traitBold)!.symbolicTraits, "Not bold")
+                XCTAssertEqual(UIFont.systemFont(ofSize:parser.font.pointSize, weight:UIFont.Weight.heavy), parsedFont,
+                               "Not bold")
             }
             expect.fulfill()
         }

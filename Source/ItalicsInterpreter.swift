@@ -7,7 +7,7 @@ class ItalicsInterpreter:Interpreter {
         self.match = ["*", "_"]
     }
     
-    func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
-        return self.update(original:format, traits:Parser.Traits.traitItalic)
+    func update(font:UIFont) -> UIFont {
+        return self.update(font:font, traits:Parser.Traits.traitItalic)
     }
 }
