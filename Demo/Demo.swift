@@ -6,7 +6,7 @@ class Demo:UIViewController {
     private weak var label:UILabel!
     
     init() {
-        self.parser = Factory.makeParser()
+        self.parser = Parser()
         super.init(nibName:nil, bundle:nil)
     }
     

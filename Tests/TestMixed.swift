@@ -6,7 +6,7 @@ class TestMixed:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
         let decorated:String = "***\(text)***"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:decorated) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -26,7 +26,7 @@ class TestMixed:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
         let decorated:String = "___\(text)___"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:decorated) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -46,7 +46,7 @@ class TestMixed:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
         let decorated:String = "_**\(text)**_"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:decorated) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -66,7 +66,7 @@ class TestMixed:XCTestCase {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
         let decorated:String = "**_\(text)_**"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:decorated) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -84,7 +84,7 @@ class TestMixed:XCTestCase {
     
     func testParseMixed() {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:"**a*b***") { (result:NSAttributedString) in
             XCTAssertEqual(result.string, "ab", "Failed to parse")
             let fontA:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont

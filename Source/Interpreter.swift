@@ -1,12 +1,12 @@
 import UIKit
 
-protocol Traits:AnyObject {
+protocol Interpreter:AnyObject {
     var match:[String] { get }
     
     func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject]
 }
 
-extension Traits {
+extension Interpreter {
     func update(original:[Parser.Format:AnyObject], traits:Parser.Traits) -> [Parser.Format:AnyObject] {
         guard
             let font:UIFont = original[Parser.Format.font] as? UIFont,

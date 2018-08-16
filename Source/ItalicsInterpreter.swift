@@ -1,13 +1,13 @@
 import UIKit
 
-class BoldTraits:Traits {
+class ItalicsInterpreter:Interpreter {
     let match:[String]
     
     init() {
-        self.match = ["**", "__"]
+        self.match = ["*", "_"]
     }
     
     func update(format:[Parser.Format:AnyObject]) -> [Parser.Format:AnyObject] {
-        return self.update(original:format, traits:Parser.Traits.traitBold)
+        return self.update(original:format, traits:Parser.Traits.traitItalic)
     }
 }

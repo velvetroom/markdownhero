@@ -4,7 +4,7 @@ import XCTest
 class TestImplementation:XCTestCase {
     func testReturnsOnMainThread() {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         DispatchQueue.global(qos:DispatchQoS.QoSClass.background).async {
             parser.parse(string:String()) { (_:NSAttributedString) in
                 XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
@@ -17,7 +17,7 @@ class TestImplementation:XCTestCase {
     func testParsePlainText() {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
         let text:String = "hello world"
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:text) { (result:NSAttributedString) in
             XCTAssertEqual(result.string, text, "Failed to parse")
             expect.fulfill()
@@ -27,7 +27,7 @@ class TestImplementation:XCTestCase {
     
     func testPlainAfterItalics() {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:"_lorem_ ipsum") { (result:NSAttributedString) in
             XCTAssertEqual(result.string, "lorem ipsum", "Failed to parse")
             let fontA:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -49,7 +49,7 @@ class TestImplementation:XCTestCase {
     
     func testPlainAfterBoldItalics() {
         let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let parser:Implementation = Implementation()
+        let parser:Parser = Parser()
         parser.parse(string:"***lorem*** ipsum") { (result:NSAttributedString) in
             XCTAssertEqual(result.string, "lorem ipsum", "Failed to parse")
             let fontA:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
@@ -71,7 +71,7 @@ class TestImplementation:XCTestCase {
     }
     
     func testCleans() {
-        let parsed:NSAttributedString = Implementation().parse(string:"\n- hello\n- world")
+        let parsed:NSAttributedString = Parser().parse(string:"\n- hello\n- world")
         XCTAssertEqual(parsed.string, "\n• hello\n• world")
     }
 }
