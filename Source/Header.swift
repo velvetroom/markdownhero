@@ -40,7 +40,7 @@ class Header {
     }
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
-        return NSAttributedString(string:string, attributes:[Parser.Format.font:
+        return NSAttributedString(string:string, attributes:[NSAttributedString.Key.font:
             UIFont.systemFont(ofSize:self.font.pointSize + item.increment, weight:UIFont.Weight.heavy)])
     }
 }
