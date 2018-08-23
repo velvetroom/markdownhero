@@ -1,34 +1,34 @@
 import UIKit
 
 public class Parser {
+    private static let identifier = "markdownhero.parser"
+    private static let font:CGFloat = 14
+    
     public var font:UIFont
     private let traits:[Interpreter]
     private let cleaner:Cleaner
     private let queue:DispatchQueue
     
     public init() {
-        self.traits = [BoldInterpreter(), ItalicsInterpreter()]
-        self.cleaner = Cleaner()
-        self.font = UIFont.systemFont(ofSize:Constants.font, weight:UIFont.Weight.ultraLight)
-        self.queue = DispatchQueue(label:Constants.identifier, qos:DispatchQoS.background,
-                                   attributes:DispatchQueue.Attributes.concurrent,
-                                   autoreleaseFrequency:DispatchQueue.AutoreleaseFrequency.inherit,
-                                   target:DispatchQueue.global(qos:DispatchQoS.QoSClass.background))
+        traits = [BoldInterpreter(), ItalicsInterpreter()]
+        cleaner = Cleaner()
+        font = UIFont.systemFont(ofSize:Parser.font, weight:.ultraLight)
+        queue = DispatchQueue(label:Parser.identifier, qos:.background, attributes:.concurrent,
+                              autoreleaseFrequency:.inherit, target:.global(qos:.background))
     }
     
     public func parse(string:String, result:@escaping((NSAttributedString) -> Void)) {
-        self.queue.async { [weak self] in
-            guard let parsed:NSAttributedString = self?.parse(string:string) else { return }
+        queue.async { [weak self] in
+            guard let parsed = self?.parse(string:string) else { return }
             DispatchQueue.main.async { result(parsed) }
         }
     }
     
     public func parse(string:String) -> NSAttributedString {
-        let scaping:Scaping = Scaping(font:self.font)
-        let header:Header = Header(font:self.font)
-        return scaping.parse(string:string) { (nonScaping:String) -> NSAttributedString in
-            header.parse(string:self.cleaner.clean(string:nonScaping)) { (nonHeader:String) -> NSAttributedString in
-                return self.traits(string:nonHeader, stack:Stack(font:self.font))
+        let header = Header(font:font)
+        return Scaping(font:font).parse(string:string) { (nonScaping) -> NSAttributedString in
+            header.parse(string:cleaner.clean(string:nonScaping)) { (nonHeader) -> NSAttributedString in
+                return traits(string:nonHeader, stack:Stack(font:font))
             }
         }
     }
@@ -71,9 +71,4 @@ public class Parser {
         }
         return index
     }
-}
-
-private struct Constants {
-    static let identifier:String = "markdownhero.parser"
-    static let font:CGFloat = 14
 }
