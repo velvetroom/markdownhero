@@ -2,7 +2,7 @@ import UIKit
 
 class Scaping {
     private let font:UIFont
-    private static let scaping:String = "```"
+    private static let scaping = "```"
     
     init(font:UIFont) {
         self.font = font
