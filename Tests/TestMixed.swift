@@ -2,102 +2,104 @@ import XCTest
 @testable import MarkdownHero
 
 class TestMixed:XCTestCase {
+    private var parser:Parser!
+    
+    override func setUp() {
+        super.setUp()
+        parser = Parser()
+    }
+    
     func testParseItalicBoldStars() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "***\(text)***"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "***\(text)***"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
+            if let parsedFont = font {
                 XCTAssertEqual(parsedFont, UIFont(descriptor:UIFont.systemFont(ofSize:
-                    parser.font.pointSize, weight:UIFont.Weight.heavy).fontDescriptor.withSymbolicTraits(
-                        UIFontDescriptor.SymbolicTraits.traitItalic)!, size:parser.font.pointSize), "Not italics bold")
+                    self.parser.font.pointSize, weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!,
+                                                  size:self.parser.font.pointSize), "Not italics bold")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testParseItalicBoldUnderscores() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "___\(text)___"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "___\(text)___"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
+            if let parsedFont = font {
                 XCTAssertEqual(parsedFont, UIFont(descriptor:UIFont.systemFont(ofSize:
-                    parser.font.pointSize, weight:UIFont.Weight.heavy).fontDescriptor.withSymbolicTraits(
-                        UIFontDescriptor.SymbolicTraits.traitItalic)!, size:parser.font.pointSize), "Not italics bold")
+                    self.parser.font.pointSize, weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!,
+                                                  size:self.parser.font.pointSize), "Not italics bold")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testParseItalicBoldMixed() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "_**\(text)**_"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "_**\(text)**_"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
+            if let parsedFont = font {
                 XCTAssertEqual(parsedFont, UIFont(descriptor:UIFont.systemFont(ofSize:
-                    parser.font.pointSize, weight:UIFont.Weight.heavy).fontDescriptor.withSymbolicTraits(
-                        UIFontDescriptor.SymbolicTraits.traitItalic)!, size:parser.font.pointSize), "Not italics bold")
+                    self.parser.font.pointSize, weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!,
+                                                  size:self.parser.font.pointSize), "Not italics bold")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testParseBoldItalicMixed() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "**_\(text)_**"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "**_\(text)_**"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
+            if let parsedFont = font {
                 XCTAssertEqual(parsedFont, UIFont(descriptor:UIFont.systemFont(ofSize:
-                    parser.font.pointSize, weight:UIFont.Weight.heavy).fontDescriptor.withSymbolicTraits(
-                        UIFontDescriptor.SymbolicTraits.traitItalic)!, size:parser.font.pointSize), "Not italics bold")
+                    self.parser.font.pointSize, weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!,
+                                                  size:self.parser.font.pointSize), "Not italics bold")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testParseMixed() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let parser:Parser = Parser()
-        parser.parse(string:"**a*b***") { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        parser.parse(string:"**a*b***") { (result) in
             XCTAssertEqual(result.string, "ab", "Failed to parse")
-            let fontA:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
-            let fontB:UIFont? = result.attribute(NSAttributedString.Key.font, at:1, effectiveRange:nil) as? UIFont
+            let fontA = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
+            let fontB = result.attribute(.font, at:1, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(fontA, "Has no font A")
             XCTAssertNotNil(fontB, "Has no font B")
-            if let parsedFontA:UIFont = fontA {
-                XCTAssertEqual(UIFont.systemFont(ofSize:parser.font.pointSize, weight:UIFont.Weight.heavy), parsedFontA,
+            if let parsedFontA = fontA {
+                XCTAssertEqual(UIFont.systemFont(ofSize:self.parser.font.pointSize, weight:.heavy), parsedFontA,
                                "Not bold")
             }
-            if let parsedFontB:UIFont = fontB {
+            if let parsedFontB = fontB {
                 XCTAssertEqual(parsedFontB, UIFont(descriptor:UIFont.systemFont(ofSize:
-                    parser.font.pointSize, weight:UIFont.Weight.heavy).fontDescriptor.withSymbolicTraits(
-                        UIFontDescriptor.SymbolicTraits.traitItalic)!, size:parser.font.pointSize), "Not italics bold")
+                    self.parser.font.pointSize, weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!,
+                                                   size:self.parser.font.pointSize), "Not italics bold")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
 }
