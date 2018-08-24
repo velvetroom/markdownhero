@@ -4,8 +4,8 @@ import UIKit
     var window:UIWindow?
     
     func application(_:UIApplication, didFinishLaunchingWithOptions:[UIApplication.LaunchOptionsKey:Any]?) -> Bool {
-        let window:UIWindow = UIWindow(frame:UIScreen.main.bounds)
-        window.backgroundColor = UIColor.white
+        let window = UIWindow(frame:UIScreen.main.bounds)
+        window.backgroundColor = .white
         window.makeKeyAndVisible()
         window.rootViewController = Demo()
         self.window = window
