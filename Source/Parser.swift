@@ -1,13 +1,12 @@
 import UIKit
 
 public class Parser {
-    private static let identifier = "markdownhero.parser"
-    private static let font:CGFloat = 14
-    
     public var font:UIFont
     private let traits:[Interpreter]
     private let cleaner:Cleaner
     private let queue:DispatchQueue
+    private static let identifier = "markdownhero.parser"
+    private static let font:CGFloat = 14
     
     public init() {
         traits = [BoldInterpreter(), ItalicsInterpreter()]
