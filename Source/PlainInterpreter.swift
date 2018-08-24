@@ -4,7 +4,7 @@ class PlainInterpreter:Interpreter {
     let match:[String]
     
     init() {
-        self.match = []
+        match = []
     }
     
     func update(font:UIFont) -> UIFont { return font }
