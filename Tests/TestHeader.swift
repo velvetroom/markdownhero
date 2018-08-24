@@ -61,7 +61,7 @@ class TestHeader:XCTestCase {
         let expect = expectation(description:"Not returning")
         parser.parse(string:"# hello world\nlorem ipsum") { (result) in
             XCTAssertEqual(result.string, "hello world\nlorem ipsum", "Failed to parse")
-            let font = result.attribute(NSAttributedString.Key.font, at:13, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:13, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
             if let parsedFont = font {
                 XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, self.parser.font.fontDescriptor.symbolicTraits,
