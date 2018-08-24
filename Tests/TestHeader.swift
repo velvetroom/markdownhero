@@ -2,70 +2,73 @@ import XCTest
 @testable import MarkdownHero
 
 class TestHeader:XCTestCase {
+    private var parser:Parser!
+    
+    override func setUp() {
+        super.setUp()
+        parser = Parser()
+    }
+    
     func testH1() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "# \(text)"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "# \(text)"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
-                XCTAssertGreaterThan(parsedFont.pointSize, parser.font.pointSize, "Font not bigger")
+            if let parsedFont = font {
+                XCTAssertGreaterThan(parsedFont.pointSize, self.parser.font.pointSize, "Font not bigger")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testH2() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "## \(text)"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "## \(text)"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
-                XCTAssertGreaterThan(parsedFont.pointSize, parser.font.pointSize, "Font not bigger")
+            if let parsedFont = font {
+                XCTAssertGreaterThan(parsedFont.pointSize, self.parser.font.pointSize, "Font not bigger")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testH3() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let text:String = "hello world"
-        let decorated:String = "### \(text)"
-        let parser:Parser = Parser()
-        parser.parse(string:decorated) { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        let text = "hello world"
+        let decorated = "### \(text)"
+        parser.parse(string:decorated) { (result) in
             XCTAssertEqual(result.string, text, "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:0, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
-                XCTAssertGreaterThan(parsedFont.pointSize, parser.font.pointSize, "Font not bigger")
+            if let parsedFont = font {
+                XCTAssertGreaterThan(parsedFont.pointSize, self.parser.font.pointSize, "Font not bigger")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
     
     func testHeaderAndPlain() {
-        let expect:XCTestExpectation = self.expectation(description:"Not returning")
-        let parser:Parser = Parser()
-        parser.parse(string:"# hello world\nlorem ipsum") { (result:NSAttributedString) in
+        let expect = expectation(description:"Not returning")
+        parser.parse(string:"# hello world\nlorem ipsum") { (result) in
             XCTAssertEqual(result.string, "hello world\nlorem ipsum", "Failed to parse")
-            let font:UIFont? = result.attribute(NSAttributedString.Key.font, at:13, effectiveRange:nil) as? UIFont
+            let font = result.attribute(.font, at:13, effectiveRange:nil) as? UIFont
             XCTAssertNotNil(font, "Has no font")
-            if let parsedFont:UIFont = font {
-                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, parser.font.fontDescriptor.symbolicTraits,
+            if let parsedFont = font {
+                XCTAssertEqual(parsedFont.fontDescriptor.symbolicTraits, self.parser.font.fontDescriptor.symbolicTraits,
                                "Not plain")
             }
             expect.fulfill()
         }
-        self.waitForExpectations(timeout:1.0, handler:nil)
+        waitForExpectations(timeout:1, handler:nil)
     }
 }

@@ -3,50 +3,49 @@ import UIKit
 class Header {
     private let items:[HeaderItem]
     private let font:UIFont
+    private static let h1:CGFloat = 15
+    private static let h2:CGFloat = 10
+    private static let h3:CGFloat = 4
     
     init(font:UIFont) {
-        self.items = [HeaderItem(match:"### ", increment:Constants.h3),
-                      HeaderItem(match:"## ", increment:Constants.h2),
-                      HeaderItem(match:"# ", increment:Constants.h1)]
+        items = [HeaderItem(match:"### ", increment:Header.h3), HeaderItem(match:"## ", increment:Header.h2),
+                 HeaderItem(match:"# ", increment:Header.h1)]
         self.font = font
     }
     
     func parse(string:String, nonHeader:((String) -> NSAttributedString)) -> NSAttributedString {
-        return self.parse(string:string, items:self.items, nonHeader:nonHeader)
+        return parse(string:string, items:items, non:nonHeader)
     }
     
-    private func parse(string:String, items:[HeaderItem], nonHeader:((String) -> NSAttributedString)) -> NSAttributedString {
+    private func parse(string:String, items:[HeaderItem], non:((String) -> NSAttributedString)) -> NSAttributedString {
         if items.isEmpty {
-            return nonHeader(string)
+            return non(string)
         }
-        var items:[HeaderItem] = items
-        let item:HeaderItem = items.removeFirst()
-        let mutable:NSMutableAttributedString = NSMutableAttributedString()
-        var components:[String] = string.components(separatedBy:item.match)
-        let first:String = components.removeFirst()
+        return header(string:string, items:items, non:non)
+    }
+    
+    private func header(string:String, items:[HeaderItem], non:((String) -> NSAttributedString)) -> NSAttributedString {
+        var items = items
+        let item = items.removeFirst()
+        let mutable = NSMutableAttributedString()
+        var components = string.components(separatedBy:item.match)
+        let first = components.removeFirst()
         if !first.isEmpty {
-            mutable.append(self.parse(string:first, items:items, nonHeader:nonHeader))
+            mutable.append(parse(string:first, items:items, non:non))
         }
-        for component:String in components {
-            if let index:String.Index = component.index(of:"\n") {
-                mutable.append(self.head(item:item, string:String(component.prefix(upTo:index))))
-                mutable.append(
-                    self.parse(string:String(component.suffix(from:index)), items:items, nonHeader:nonHeader))
+        for component in components {
+            if let index = component.index(of:"\n") {
+                mutable.append(head(item:item, string:String(component.prefix(upTo:index))))
+                mutable.append(parse(string:String(component.suffix(from:index)), items:items, non:non))
             } else {
-                mutable.append(self.head(item:item, string:component))
+                mutable.append(head(item:item, string:component))
             }
         }
         return mutable
     }
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
-        return NSAttributedString(string:string, attributes:[NSAttributedStringKey.font:
-            UIFont.systemFont(ofSize:self.font.pointSize + item.increment, weight:UIFont.Weight.heavy)])
+        return NSAttributedString(string:string, attributes:[.font:UIFont.systemFont(ofSize:
+            font.pointSize + item.increment, weight:.heavy)])
     }
-}
-
-private struct Constants {
-    static let h1:CGFloat = 15.0
-    static let h2:CGFloat = 10.0
-    static let h3:CGFloat = 4.0
 }

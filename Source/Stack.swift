@@ -4,12 +4,12 @@ class Stack {
     var items:[StackItem]
     
     init(font:UIFont) {
-        self.items = [StackItem(interpreter:PlainInterpreter(), font:font)]
+        items = [StackItem(interpreter:PlainInterpreter(), font:font)]
     }
     
     func canBeNext(interpreter:Interpreter) -> Bool {
-        for index:Int in 0 ..< self.items.count - 1 {
-            if interpreter === self.items[index].interpreter {
+        for index in 0 ..< items.count - 1 {
+            if interpreter === items[index].interpreter {
                 return false
             }
         }
@@ -17,10 +17,10 @@ class Stack {
     }
     
     func add(interpreter:Interpreter) {
-        if interpreter === self.items.last!.interpreter {
-            self.items.removeLast()
+        if interpreter === items.last!.interpreter {
+            items.removeLast()
         } else {
-            self.items.append(StackItem(interpreter:interpreter, font:interpreter.update(font:self.items.last!.font)))
+            items.append(StackItem(interpreter:interpreter, font:interpreter.update(font:items.last!.font)))
         }
     }
 }

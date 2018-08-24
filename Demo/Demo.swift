@@ -6,7 +6,7 @@ class Demo:UIViewController {
     private weak var label:UILabel!
     
     init() {
-        self.parser = Parser()
+        parser = Parser()
         super.init(nibName:nil, bundle:nil)
     }
     
@@ -14,27 +14,27 @@ class Demo:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addLabel()
-        self.loadExample()
+        addLabel()
+        loadExample()
     }
     
     private func addLabel() {
         let label:UILabel = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
+        view.addSubview(label)
         self.label = label
-        self.view.addSubview(label)
-        label.topAnchor.constraint(equalTo:self.view.topAnchor, constant:80.0).isActive = true
-        label.leftAnchor.constraint(equalTo:self.view.leftAnchor, constant:20.0).isActive = true
-        label.rightAnchor.constraint(equalTo:self.view.rightAnchor, constant:20.0).isActive = true
+        label.topAnchor.constraint(equalTo:view.topAnchor, constant:80).isActive = true
+        label.leftAnchor.constraint(equalTo:view.leftAnchor, constant:20).isActive = true
+        label.rightAnchor.constraint(equalTo:view.rightAnchor, constant:20).isActive = true
     }
     
     private func loadExample() {
-        let url:URL = Bundle(for:Demo.self).url(forResource:"Demo", withExtension:"md")!
+        let url = Bundle(for:Demo.self).url(forResource:"Demo", withExtension:"md")!
         let data:Data
-        do { try data = Data.init(contentsOf:url, options:Data.ReadingOptions.mappedRead) } catch { return }
-        let string:String = String(data:data, encoding:String.Encoding.utf8)!
-        self.parser.parse(string:string) { [weak self] (result:NSAttributedString) in
+        do { try data = Data.init(contentsOf:url, options:.mappedRead) } catch { return }
+        let string = String(data:data, encoding:.utf8)!
+        parser.parse(string:string) { [weak self] (result) in
             self?.label.attributedText = result
         }
     }

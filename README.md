@@ -35,14 +35,14 @@ import MarkdownHero
 
 Make a parser
 ```
-let parser:Parser = Parser()
+let parser = Parser()
 ```
 
 Let the magic begin
 
 ```
-parser.parse(string:"# hello world") { [weak self] (result:NSAttributedString) in
-    // use your attributed string
+parser.parse(string:"# hello world") { [weak self] (result) in
+    // result is an attributed string
 }
 ```
 
