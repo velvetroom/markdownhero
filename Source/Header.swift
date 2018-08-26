@@ -3,13 +3,10 @@ import UIKit
 class Header {
     private let items:[HeaderItem]
     private let font:UIFont
-    private static let h1:CGFloat = 15
-    private static let h2:CGFloat = 10
-    private static let h3:CGFloat = 4
     
     init(font:UIFont) {
-        items = [HeaderItem(match:"### ", increment:Header.h3), HeaderItem(match:"## ", increment:Header.h2),
-                 HeaderItem(match:"# ", increment:Header.h1)]
+        items = [HeaderItem(match:"### ", increment:4), HeaderItem(match:"## ", increment:10),
+                 HeaderItem(match:"# ", increment:15)]
         self.font = font
     }
     

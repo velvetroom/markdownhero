@@ -5,15 +5,14 @@ class TestImplementation:XCTestCase {
     private var parser:Parser!
     
     override func setUp() {
-        super.setUp()
         parser = Parser()
     }
     
     func testReturnsOnMainThread() {
-        let expect = expectation(description:"Not returning")
+        let expect = expectation(description:String())
         DispatchQueue.global(qos:.background).async {
             self.parser.parse(string:String()) { (_) in
-                XCTAssertEqual(Thread.current, Thread.main, "Not main thread")
+                XCTAssertEqual(Thread.main, Thread.current)
                 expect.fulfill()
             }
         }
@@ -21,62 +20,43 @@ class TestImplementation:XCTestCase {
     }
     
     func testParsePlainText() {
-        let expect = expectation(description:"Not returning")
-        let text = "hello world"
-        let parser = Parser()
-        parser.parse(string:text) { (result) in
-            XCTAssertEqual(result.string, text, "Failed to parse")
+        let expect = expectation(description:String())
+        parser.parse(string:"hello world") { (result) in
+            XCTAssertEqual("hello world", result.string)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
     }
     
     func testPlainAfterItalics() {
-        let expect = expectation(description:"Not returning")
+        let expect = expectation(description:String())
         parser.parse(string:"_lorem_ ipsum") { (result) in
-            XCTAssertEqual(result.string, "lorem ipsum", "Failed to parse")
-            let fontA = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
-            let fontB = result.attribute(.font, at:6, effectiveRange:nil) as? UIFont
-            XCTAssertNotNil(fontA, "Has no font A")
-            XCTAssertNotNil(fontB, "Has no font B")
-            if let parsedFontA = fontA {
-                XCTAssertEqual(parsedFontA.fontDescriptor.symbolicTraits,
-                               self.parser.font.fontDescriptor.withSymbolicTraits(.traitItalic)!.symbolicTraits,
-                               "Not bold")
-            }
-            if let parsedFontB = fontB {
-                XCTAssertEqual(parsedFontB.fontDescriptor.symbolicTraits,
-                               self.parser.font.fontDescriptor.symbolicTraits, "Not plain text")
-            }
+            XCTAssertEqual("lorem ipsum", result.string)
+            let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
+            let fontB = result.attribute(.font, at:6, effectiveRange:nil) as! UIFont
+            XCTAssertEqual(self.parser.font.fontDescriptor.withSymbolicTraits(.traitItalic)!.symbolicTraits,
+                           fontA.fontDescriptor.symbolicTraits)
+            XCTAssertEqual(self.parser.font.fontDescriptor.symbolicTraits, fontB.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
     }
     
     func testPlainAfterBoldItalics() {
-        let expect = expectation(description:"Not returning")
+        let expect = expectation(description:String())
         parser.parse(string:"***lorem*** ipsum") { (result) in
-            XCTAssertEqual(result.string, "lorem ipsum", "Failed to parse")
-            let fontA = result.attribute(.font, at:0, effectiveRange:nil) as? UIFont
-            let fontB = result.attribute(.font, at:6, effectiveRange:nil) as? UIFont
-            XCTAssertNotNil(fontA, "Has no font A")
-            XCTAssertNotNil(fontB, "Has no font B")
-            if let parsedFontA = fontA {
-                XCTAssertEqual(parsedFontA, UIFont(descriptor:UIFont.systemFont(
-                    ofSize:self.parser.font.pointSize, weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!,
-                                                   size:self.parser.font.pointSize), "Not italics bold")
-            }
-            if let parsedFontB = fontB {
-                XCTAssertEqual(parsedFontB.fontDescriptor.symbolicTraits,
-                               self.parser.font.fontDescriptor.symbolicTraits, "Not plain text")
-            }
+            XCTAssertEqual("lorem ipsum", result.string)
+            let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
+            let fontB = result.attribute(.font, at:6, effectiveRange:nil) as! UIFont
+            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
+            weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), fontA)
+            XCTAssertEqual(self.parser.font.fontDescriptor.symbolicTraits, fontB.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
     }
     
     func testCleans() {
-        let parsed = parser.parse(string:"\n- hello\n- world")
-        XCTAssertEqual(parsed.string, "\n• hello\n• world")
+        XCTAssertEqual("\n• hello\n• world", parser.parse(string:"\n- hello\n- world").string)
     }
 }
