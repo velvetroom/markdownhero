@@ -1,12 +1,11 @@
 import UIKit
 
 class Header {
-    private let items:[HeaderItem]
     private let font:UIFont
+    private let items = [HeaderItem(match:"### ", increment:4), HeaderItem(match:"## ", increment:10),
+                         HeaderItem(match:"# ", increment:15)]
     
     init(font:UIFont) {
-        items = [HeaderItem(match:"### ", increment:4), HeaderItem(match:"## ", increment:10),
-                 HeaderItem(match:"# ", increment:15)]
         self.font = font
     }
     

@@ -1,11 +1,6 @@
 import UIKit
 
 class PlainInterpreter:Interpreter {
-    let match:[String]
-    
-    init() {
-        match = []
-    }
-    
+    let match:[String] = []
     func update(font:UIFont) -> UIFont { return font }
 }

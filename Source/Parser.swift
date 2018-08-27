@@ -1,18 +1,13 @@
 import UIKit
 
 public class Parser {
-    public var font:UIFont
-    private let traits:[Interpreter]
-    private let cleaner:Cleaner
-    private let queue:DispatchQueue
+    public var font = UIFont.systemFont(ofSize:14, weight:.ultraLight)
+    private let traits:[Interpreter] = [BoldInterpreter(), ItalicsInterpreter()]
+    private let cleaner = Cleaner()
+    private let queue = DispatchQueue(label:String(), qos:.background, attributes:.concurrent,
+                                      target:.global(qos:.background))
     
-    public init() {
-        traits = [BoldInterpreter(), ItalicsInterpreter()]
-        cleaner = Cleaner()
-        font = UIFont.systemFont(ofSize:14, weight:.ultraLight)
-        queue = DispatchQueue(label:"markdownhero.parser", qos:.background, attributes:.concurrent,
-                              autoreleaseFrequency:.inherit, target:.global(qos:.background))
-    }
+    public init() { }
     
     public func parse(string:String, result:@escaping((NSAttributedString) -> Void)) {
         queue.async { [weak self] in
