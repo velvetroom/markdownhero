@@ -2,8 +2,8 @@ import UIKit
 
 class Header {
     private let font:UIFont
-    private let items = [HeaderItem(match:"### ", increment:1, weight:.bold), HeaderItem(match:"## ", increment:
-        7, weight:.bold), HeaderItem(match:"# ", increment:15, weight:.heavy)]
+    private let items = [HeaderItem(match:"### ", increment:1), HeaderItem(match:"## ", increment:7),
+                         HeaderItem(match:"# ", increment:15)]
     
     init(font:UIFont) {
         self.font = font
@@ -30,7 +30,7 @@ class Header {
             mutable.append(parse(string:first, items:items, non:non))
         }
         for component in components {
-            if let index = component.firstIndex(of:"\n") {
+            if let index = component.index(of:"\n") {
                 mutable.append(head(item:item, string:String(component.prefix(upTo:index))))
                 mutable.append(parse(string:String(component.suffix(from:index)), items:items, non:non))
             } else {
@@ -42,6 +42,6 @@ class Header {
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
         return NSAttributedString(string:string, attributes:[.font:UIFont.systemFont(ofSize:
-            font.pointSize + item.increment, weight:item.weight)])
+            font.pointSize + item.increment, weight:.bold)])
     }
 }

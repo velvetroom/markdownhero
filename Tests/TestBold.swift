@@ -13,7 +13,8 @@ class TestBold:XCTestCase {
         parser.parse(string:"**hello world**") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont.systemFont(ofSize:self.parser.font.pointSize, weight:.heavy), font)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                .traitBold)?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
@@ -24,7 +25,8 @@ class TestBold:XCTestCase {
         parser.parse(string:"__hello world__") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont.systemFont(ofSize:self.parser.font.pointSize, weight:.heavy), font)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                .traitBold)?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
