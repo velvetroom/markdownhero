@@ -11,7 +11,7 @@ s.author           = { 'iturbide' => 'markdownhero@iturbi.de' }
 s.platform         = :ios, '9.0'
 s.source           = { :git => 'https://github.com/velvetroom/markdownhero.git', :tag => "v#{s.version}" }
 s.source_files     = 'Source/*.swift'
-s.swift_version    = '4.1'
+s.swift_version    = '4.2'
 s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 s.prefix_header_file = false
 s.static_framework = true
