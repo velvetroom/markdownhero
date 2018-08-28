@@ -1,6 +1,6 @@
 import UIKit
 
-class Scaping {
+class Escaping {
     private let font:UIFont
     
     init(font:UIFont) {

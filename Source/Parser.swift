@@ -18,7 +18,7 @@ public class Parser {
     
     public func parse(string:String) -> NSAttributedString {
         let header = Header(font:font)
-        return Scaping(font:font).parse(string:string) { (nonScaping) -> NSAttributedString in
+        return Escaping(font:font).parse(string:string) { (nonScaping) -> NSAttributedString in
             header.parse(string:cleaner.clean(string:nonScaping)) { (nonHeader) -> NSAttributedString in
                 return traits(string:nonHeader, stack:Stack(font:font))
             }
