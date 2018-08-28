@@ -30,7 +30,7 @@ class Header {
             mutable.append(parse(string:first, items:items, non:non))
         }
         for component in components {
-            if let index = component.index(of:"\n") {
+            if let index = component.firstIndex(of:"\n") {
                 mutable.append(head(item:item, string:String(component.prefix(upTo:index))))
                 mutable.append(parse(string:String(component.suffix(from:index)), items:items, non:non))
             } else {
