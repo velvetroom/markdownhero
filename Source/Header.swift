@@ -2,8 +2,8 @@ import UIKit
 
 class Header {
     private let font:UIFont
-    private let items = [HeaderItem(match:"### ", increment:4), HeaderItem(match:"## ", increment:10),
-                         HeaderItem(match:"# ", increment:15)]
+    private let items = [HeaderItem(match:"### ", increment:1, weight:.bold), HeaderItem(match:"## ", increment:
+        7, weight:.bold), HeaderItem(match:"# ", increment:15, weight:.heavy)]
     
     init(font:UIFont) {
         self.font = font
@@ -42,6 +42,6 @@ class Header {
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
         return NSAttributedString(string:string, attributes:[.font:UIFont.systemFont(ofSize:
-            font.pointSize + item.increment, weight:.heavy)])
+            font.pointSize + item.increment, weight:item.weight)])
     }
 }
