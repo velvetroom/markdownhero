@@ -1,20 +1,13 @@
 import UIKit
 
 public class Parser {
-    public var font:UIFont
-    private let traits:[Interpreter]
-    private let cleaner:Cleaner
-    private let queue:DispatchQueue
-    private static let identifier = "markdownhero.parser"
-    private static let font:CGFloat = 14
+    public var font = UIFont.systemFont(ofSize:14, weight:.ultraLight)
+    private let traits:[Interpreter] = [BoldInterpreter(), ItalicsInterpreter()]
+    private let cleaner = Cleaner()
+    private let queue = DispatchQueue(label:String(), qos:.background, attributes:.concurrent,
+                                      target:.global(qos:.background))
     
-    public init() {
-        traits = [BoldInterpreter(), ItalicsInterpreter()]
-        cleaner = Cleaner()
-        font = UIFont.systemFont(ofSize:Parser.font, weight:.ultraLight)
-        queue = DispatchQueue(label:Parser.identifier, qos:.background, attributes:.concurrent,
-                              autoreleaseFrequency:.inherit, target:.global(qos:.background))
-    }
+    public init() { }
     
     public func parse(string:String, result:@escaping((NSAttributedString) -> Void)) {
         queue.async { [weak self] in
@@ -25,7 +18,7 @@ public class Parser {
     
     public func parse(string:String) -> NSAttributedString {
         let header = Header(font:font)
-        return Scaping(font:font).parse(string:string) { (nonScaping) -> NSAttributedString in
+        return Escaping(font:font).parse(string:string) { (nonScaping) -> NSAttributedString in
             header.parse(string:cleaner.clean(string:nonScaping)) { (nonHeader) -> NSAttributedString in
                 return traits(string:nonHeader, stack:Stack(font:font))
             }

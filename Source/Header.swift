@@ -1,15 +1,11 @@
 import UIKit
 
 class Header {
-    private let items:[HeaderItem]
     private let font:UIFont
-    private static let h1:CGFloat = 15
-    private static let h2:CGFloat = 10
-    private static let h3:CGFloat = 4
+    private let items = [HeaderItem(match:"### ", increment:1, weight:.bold), HeaderItem(match:"## ", increment:
+        7, weight:.bold), HeaderItem(match:"# ", increment:15, weight:.heavy)]
     
     init(font:UIFont) {
-        items = [HeaderItem(match:"### ", increment:Header.h3), HeaderItem(match:"## ", increment:Header.h2),
-                 HeaderItem(match:"# ", increment:Header.h1)]
         self.font = font
     }
     
@@ -46,6 +42,6 @@ class Header {
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
         return NSAttributedString(string:string, attributes:[.font:UIFont.systemFont(ofSize:
-            font.pointSize + item.increment, weight:.heavy)])
+            font.pointSize + item.increment, weight:item.weight)])
     }
 }

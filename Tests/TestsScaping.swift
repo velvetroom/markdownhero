@@ -5,20 +5,19 @@ class TestsScaping:XCTestCase {
     private var parser:Parser!
     
     override func setUp() {
-        super.setUp()
         parser = Parser()
     }
     
     func testScaping() {
-        XCTAssertEqual(parser.parse(string:"``` # *hello *world***```").string, " # *hello *world***", "Not scaped")
+        XCTAssertEqual(" # *hello *world***", parser.parse(string:"``` # *hello *world***```").string)
     }
     
     func testScapingWithPlain() {
-        XCTAssertEqual(parser.parse(string:"**Bold**``` # *hello *world***```\nPlain").string,
-                       "Bold # *hello *world***\nPlain", "Not scaped")
+        XCTAssertEqual("Bold # *hello *world***\nPlain",
+                       parser.parse(string:"**Bold**``` # *hello *world***```\nPlain").string)
     }
     
     func testScapingLists() {
-        XCTAssertEqual(parser.parse(string:"```\n- list item```").string, "\n- list item", "Not scaped")
+        XCTAssertEqual("\n- list item", parser.parse(string:"```\n- list item```").string)
     }
 }

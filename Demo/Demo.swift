@@ -2,15 +2,8 @@ import UIKit
 import MarkdownHero
 
 class Demo:UIViewController {
-    private let parser:Parser
+    private let parser = Parser()
     private weak var label:UILabel!
-    
-    init() {
-        parser = Parser()
-        super.init(nibName:nil, bundle:nil)
-    }
-    
-    required init?(coder:NSCoder) { return nil }
     
     override func viewDidLoad() {
         super.viewDidLoad()
