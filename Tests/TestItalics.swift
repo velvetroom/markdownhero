@@ -13,8 +13,8 @@ class TestItalics:XCTestCase {
         parser.parse(string:"_hello world_") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(self.parser.font.fontDescriptor.withSymbolicTraits(.traitItalic)!.symbolicTraits,
-                           font.fontDescriptor.symbolicTraits)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                .traitItalic)?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
@@ -25,8 +25,8 @@ class TestItalics:XCTestCase {
         parser.parse(string:"*hello world*") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(self.parser.font.fontDescriptor.withSymbolicTraits(.traitItalic)!.symbolicTraits,
-                           font.fontDescriptor.symbolicTraits)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                .traitItalic)?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)

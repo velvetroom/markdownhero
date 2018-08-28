@@ -34,8 +34,8 @@ class TestImplementation:XCTestCase {
             XCTAssertEqual("lorem ipsum", result.string)
             let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             let fontB = result.attribute(.font, at:6, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(self.parser.font.fontDescriptor.withSymbolicTraits(.traitItalic)!.symbolicTraits,
-                           fontA.fontDescriptor.symbolicTraits)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                .traitItalic)?.symbolicTraits, fontA.fontDescriptor.symbolicTraits)
             XCTAssertEqual(self.parser.font.fontDescriptor.symbolicTraits, fontB.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
@@ -48,8 +48,8 @@ class TestImplementation:XCTestCase {
             XCTAssertEqual("lorem ipsum", result.string)
             let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             let fontB = result.attribute(.font, at:6, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
-            weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), fontA)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                [.traitBold, .traitItalic])?.symbolicTraits, fontA.fontDescriptor.symbolicTraits)
             XCTAssertEqual(self.parser.font.fontDescriptor.symbolicTraits, fontB.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }

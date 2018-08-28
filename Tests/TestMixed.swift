@@ -13,8 +13,8 @@ class TestMixed:XCTestCase {
         parser.parse(string:"***hello world***") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
-            weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), font)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                [.traitItalic, .traitBold])?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
@@ -25,8 +25,8 @@ class TestMixed:XCTestCase {
         parser.parse(string:"___hello world___") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
-                weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), font)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                [.traitItalic, .traitBold])?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
@@ -37,8 +37,8 @@ class TestMixed:XCTestCase {
         parser.parse(string:"_**hello world**_") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
-                weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), font)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                [.traitItalic, .traitBold])?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
@@ -49,8 +49,8 @@ class TestMixed:XCTestCase {
         parser.parse(string:"**_hello world_**") { (result) in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
-                weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), font)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                [.traitItalic, .traitBold])?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
@@ -62,9 +62,10 @@ class TestMixed:XCTestCase {
             XCTAssertEqual("ab", result.string, "Failed to parse")
             let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             let fontB = result.attribute(.font, at:1, effectiveRange:nil) as! UIFont
-            XCTAssertEqual(UIFont.systemFont(ofSize:self.parser.font.pointSize, weight:.heavy), fontA)
-            XCTAssertEqual(UIFont(descriptor:UIFont.systemFont(ofSize:self.parser.font.pointSize,
-            weight:.heavy).fontDescriptor.withSymbolicTraits(.traitItalic)!, size:self.parser.font.pointSize), fontB)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                .traitBold)?.symbolicTraits, fontA.fontDescriptor.symbolicTraits)
+            XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
+                [.traitItalic, .traitBold])?.symbolicTraits, fontB.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
         waitForExpectations(timeout:1, handler:nil)
