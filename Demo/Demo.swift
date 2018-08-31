@@ -27,7 +27,7 @@ class Demo:UIViewController {
         let data:Data
         do { try data = Data.init(contentsOf:url, options:.mappedRead) } catch { return }
         let string = String(data:data, encoding:.utf8)!
-        parser.parse(string:string) { [weak self] (result) in
+        parser.parse(string:string) { [weak self] result in
             self?.label.attributedText = result
         }
     }

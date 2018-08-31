@@ -9,7 +9,7 @@ class Cleaner {
     
     func clean(string:String) -> String {
         var cleaned = string
-        items.forEach { (item) in
+        items.forEach { item in
             while cleaned.contains(item.match) {
                 cleaned = cleaned.replacingOccurrences(of:item.match, with:item.replace)
             }

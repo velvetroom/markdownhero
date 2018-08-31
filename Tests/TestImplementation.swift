@@ -11,7 +11,7 @@ class TestImplementation:XCTestCase {
     func testReturnsOnMainThread() {
         let expect = expectation(description:String())
         DispatchQueue.global(qos:.background).async {
-            self.parser.parse(string:String()) { (_) in
+            self.parser.parse(string:String()) { _ in
                 XCTAssertEqual(Thread.main, Thread.current)
                 expect.fulfill()
             }
@@ -21,7 +21,7 @@ class TestImplementation:XCTestCase {
     
     func testParsePlainText() {
         let expect = expectation(description:String())
-        parser.parse(string:"hello world") { (result) in
+        parser.parse(string:"hello world") { result in
             XCTAssertEqual("hello world", result.string)
             expect.fulfill()
         }
@@ -30,7 +30,7 @@ class TestImplementation:XCTestCase {
     
     func testPlainAfterItalics() {
         let expect = expectation(description:String())
-        parser.parse(string:"_lorem_ ipsum") { (result) in
+        parser.parse(string:"_lorem_ ipsum") { result in
             XCTAssertEqual("lorem ipsum", result.string)
             let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             let fontB = result.attribute(.font, at:6, effectiveRange:nil) as! UIFont
@@ -44,7 +44,7 @@ class TestImplementation:XCTestCase {
     
     func testPlainAfterBoldItalics() {
         let expect = expectation(description:String())
-        parser.parse(string:"***lorem*** ipsum") { (result) in
+        parser.parse(string:"***lorem*** ipsum") { result in
             XCTAssertEqual("lorem ipsum", result.string)
             let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             let fontB = result.attribute(.font, at:6, effectiveRange:nil) as! UIFont

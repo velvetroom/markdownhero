@@ -41,7 +41,7 @@ public class Parser {
     
     private func next(string:String, stack:Stack) -> Position? {
         var character:Position?
-        traits.forEach { (item) in
+        traits.forEach { item in
             guard
                 stack.canBeNext(interpreter:item),
                 let interpreterIndex = next(string:string, interpreter:item)
@@ -55,7 +55,7 @@ public class Parser {
     
     private func next(string:String, interpreter:Interpreter) -> Range<String.Index>? {
         var index:Range<String.Index>?
-        interpreter.match.forEach { (item) in
+        interpreter.match.forEach { item in
             guard let range = string.range(of:item) else { return }
             if index == nil || (index != nil && range.lowerBound < index!.lowerBound) {
                 index = range

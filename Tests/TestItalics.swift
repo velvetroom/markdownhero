@@ -10,7 +10,7 @@ class TestItalics:XCTestCase {
     
     func testParseItalicsUnderscore() {
         let expect = expectation(description:String())
-        parser.parse(string:"_hello world_") { (result) in
+        parser.parse(string:"_hello world_") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
@@ -22,7 +22,7 @@ class TestItalics:XCTestCase {
     
     func testParseItalicsStar() {
         let expect = expectation(description:String())
-        parser.parse(string:"*hello world*") { (result) in
+        parser.parse(string:"*hello world*") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(

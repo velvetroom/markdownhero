@@ -41,7 +41,7 @@ let parser = Parser()
 Let the magic begin
 
 ```
-parser.parse(string:"# hello world") { [weak self] (result) in
+parser.parse(string:"# hello world") { [weak self] result in
     // result is an attributed string
 }
 ```
