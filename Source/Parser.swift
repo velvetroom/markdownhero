@@ -52,13 +52,11 @@ public class Parser {
     }
     
     private func next(string:String, interpreter:Interpreter) -> Range<String.Index>? {
-        var index:Range<String.Index>?
-        interpreter.match.forEach { item in
+        return interpreter.match.reduce(into:nil) { index, item in
             guard let range = string.range(of:item) else { return }
             if index == nil || (index != nil && range.lowerBound < index!.lowerBound) {
                 index = range
             }
         }
-        return index
     }
 }
