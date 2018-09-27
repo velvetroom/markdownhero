@@ -40,8 +40,7 @@ public class Parser {
     }
     
     private func next(string:String, stack:Stack) -> Position? {
-        var character:Position?
-        traits.forEach { item in
+        return traits.reduce(into:nil) { character, item in
             guard
                 stack.canBeNext(interpreter:item),
                 let interpreterIndex = next(string:string, interpreter:item)
@@ -50,7 +49,6 @@ public class Parser {
                 character = Position(interpreter:item, index:interpreterIndex)
             }
         }
-        return character
     }
     
     private func next(string:String, interpreter:Interpreter) -> Range<String.Index>? {
