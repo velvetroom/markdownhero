@@ -1,5 +1,9 @@
 # Change log
 
+## Version 1.5
+
+- Updated for Swift 4.2
+
 ## Version 1.4
 
 - Updated headers font
