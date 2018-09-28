@@ -10,7 +10,7 @@ class TestHeader:XCTestCase {
     
     func testH1() {
         let expect = expectation(description:String())
-        parser.parse(string:"# hello world") { (result) in
+        parser.parse(string:"# hello world") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertGreaterThan(font.pointSize, self.parser.font.pointSize)
@@ -21,7 +21,7 @@ class TestHeader:XCTestCase {
     
     func testH2() {
         let expect = expectation(description:String())
-        parser.parse(string:"## hello world") { (result) in
+        parser.parse(string:"## hello world") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertGreaterThan(font.pointSize, self.parser.font.pointSize)
@@ -32,7 +32,7 @@ class TestHeader:XCTestCase {
     
     func testH3() {
         let expect = expectation(description:String())
-        parser.parse(string:"### hello world") { (result) in
+        parser.parse(string:"### hello world") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertGreaterThan(font.pointSize, self.parser.font.pointSize)
@@ -43,7 +43,7 @@ class TestHeader:XCTestCase {
     
     func testHeaderAndPlain() {
         let expect = expectation(description:String())
-        parser.parse(string:"# hello world\nlorem ipsum") { (result) in
+        parser.parse(string:"# hello world\nlorem ipsum") { result in
             XCTAssertEqual("hello world\nlorem ipsum", result.string)
             let font = result.attribute(.font, at:13, effectiveRange:nil) as! UIFont
             XCTAssertEqual(self.parser.font.fontDescriptor.symbolicTraits, font.fontDescriptor.symbolicTraits)

@@ -24,11 +24,11 @@ class Demo:UIViewController {
     
     private func loadExample() {
         let url = Bundle(for:Demo.self).url(forResource:"Demo", withExtension:"md")!
-        let data:Data
-        do { try data = Data.init(contentsOf:url, options:.mappedRead) } catch { return }
-        let string = String(data:data, encoding:.utf8)!
-        parser.parse(string:string) { [weak self] (result) in
-            self?.label.attributedText = result
+        if let data = try? Data.init(contentsOf:url, options:.mappedRead) {
+            let string = String(data:data, encoding:.utf8)!
+            parser.parse(string:string) { [weak self] result in
+                self?.label.attributedText = result
+            }
         }
     }
 }

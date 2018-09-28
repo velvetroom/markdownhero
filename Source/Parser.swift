@@ -18,8 +18,8 @@ public class Parser {
     
     public func parse(string:String) -> NSAttributedString {
         let header = Header(font:font)
-        return Escaping(font:font).parse(string:string) { (nonScaping) -> NSAttributedString in
-            header.parse(string:cleaner.clean(string:nonScaping)) { (nonHeader) -> NSAttributedString in
+        return Escaping(font:font).parse(string:string) { nonScaping -> NSAttributedString in
+            header.parse(string:cleaner.clean(string:nonScaping)) { nonHeader -> NSAttributedString in
                 return traits(string:nonHeader, stack:Stack(font:font))
             }
         }
@@ -40,8 +40,7 @@ public class Parser {
     }
     
     private func next(string:String, stack:Stack) -> Position? {
-        var character:Position?
-        traits.forEach { (item) in
+        return traits.reduce(into:nil) { character, item in
             guard
                 stack.canBeNext(interpreter:item),
                 let interpreterIndex = next(string:string, interpreter:item)
@@ -50,17 +49,14 @@ public class Parser {
                 character = Position(interpreter:item, index:interpreterIndex)
             }
         }
-        return character
     }
     
     private func next(string:String, interpreter:Interpreter) -> Range<String.Index>? {
-        var index:Range<String.Index>?
-        interpreter.match.forEach { (item) in
+        return interpreter.match.reduce(into:nil) { index, item in
             guard let range = string.range(of:item) else { return }
             if index == nil || (index != nil && range.lowerBound < index!.lowerBound) {
                 index = range
             }
         }
-        return index
     }
 }

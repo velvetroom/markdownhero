@@ -10,7 +10,7 @@ class TestMixed:XCTestCase {
     
     func testParseItalicBoldStars() {
         let expect = expectation(description:String())
-        parser.parse(string:"***hello world***") { (result) in
+        parser.parse(string:"***hello world***") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
@@ -22,7 +22,7 @@ class TestMixed:XCTestCase {
     
     func testParseItalicBoldUnderscores() {
         let expect = expectation(description:String())
-        parser.parse(string:"___hello world___") { (result) in
+        parser.parse(string:"___hello world___") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
@@ -34,7 +34,7 @@ class TestMixed:XCTestCase {
     
     func testParseItalicBoldMixed() {
         let expect = expectation(description:String())
-        parser.parse(string:"_**hello world**_") { (result) in
+        parser.parse(string:"_**hello world**_") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
@@ -46,7 +46,7 @@ class TestMixed:XCTestCase {
     
     func testParseBoldItalicMixed() {
         let expect = expectation(description:String())
-        parser.parse(string:"**_hello world_**") { (result) in
+        parser.parse(string:"**_hello world_**") { result in
             XCTAssertEqual("hello world", result.string)
             let font = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             XCTAssertEqual(UIFontDescriptor(name:self.parser.font.familyName, size:14).withSymbolicTraits(
@@ -58,7 +58,7 @@ class TestMixed:XCTestCase {
     
     func testParseMixed() {
         let expect = expectation(description:String())
-        parser.parse(string:"**a*b***") { (result) in
+        parser.parse(string:"**a*b***") { result in
             XCTAssertEqual("ab", result.string, "Failed to parse")
             let fontA = result.attribute(.font, at:0, effectiveRange:nil) as! UIFont
             let fontB = result.attribute(.font, at:1, effectiveRange:nil) as! UIFont

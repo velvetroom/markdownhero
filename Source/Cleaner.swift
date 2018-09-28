@@ -8,12 +8,10 @@ class Cleaner {
                          CleanerItem(match:"\n* ", replace:"\n• ")]
     
     func clean(string:String) -> String {
-        var cleaned = string
-        items.forEach { (item) in
+        return items.reduce(into:string) { cleaned, item in
             while cleaned.contains(item.match) {
                 cleaned = cleaned.replacingOccurrences(of:item.match, with:item.replace)
             }
         }
-        return cleaned
     }
 }

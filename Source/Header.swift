@@ -29,7 +29,7 @@ class Header {
         if !first.isEmpty {
             mutable.append(parse(string:first, items:items, non:non))
         }
-        for component in components {
+        return components.reduce(into:mutable) { mutable, component in
             if let index = component.index(of:"\n") {
                 mutable.append(head(item:item, string:String(component.prefix(upTo:index))))
                 mutable.append(parse(string:String(component.suffix(from:index)), items:items, non:non))
@@ -37,7 +37,6 @@ class Header {
                 mutable.append(head(item:item, string:component))
             }
         }
-        return mutable
     }
     
     private func head(item:HeaderItem, string:String) -> NSAttributedString {
