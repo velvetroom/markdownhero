@@ -1,5 +1,9 @@
 # Change log
 
+## Version 1.6
+
+- Rename interface to Hero
+
 ## Version 1.5
 
 - Updated for Swift 4.2
