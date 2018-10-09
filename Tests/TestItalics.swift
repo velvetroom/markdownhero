@@ -2,10 +2,10 @@ import XCTest
 @testable import MarkdownHero
 
 class TestItalics:XCTestCase {
-    private var parser:Parser!
+    private var parser:Hero!
     
     override func setUp() {
-        parser = Parser()
+        parser = Hero()
     }
     
     func testParseItalicsUnderscore() {
