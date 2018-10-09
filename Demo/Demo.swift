@@ -2,7 +2,7 @@ import UIKit
 import MarkdownHero
 
 class Demo:UIViewController {
-    private let parser = Parser()
+    private let hero = Hero()
     private weak var label:UILabel!
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class Demo:UIViewController {
         let url = Bundle(for:Demo.self).url(forResource:"Demo", withExtension:"md")!
         if let data = try? Data.init(contentsOf:url, options:.mappedRead) {
             let string = String(data:data, encoding:.utf8)!
-            parser.parse(string:string) { [weak self] result in
+            hero.parse(string:string) { [weak self] result in
                 self?.label.attributedText = result
             }
         }

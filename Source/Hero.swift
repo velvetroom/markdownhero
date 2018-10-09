@@ -1,6 +1,6 @@
 import UIKit
 
-public class Parser {
+public class Hero {
     public var font = UIFont.systemFont(ofSize:14, weight:.light)
     private let traits:[Interpreter] = [BoldInterpreter(), ItalicsInterpreter()]
     private let cleaner = Cleaner()
