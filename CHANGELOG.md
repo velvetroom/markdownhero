@@ -1,5 +1,9 @@
 # Change log
 
+## Version 1.7
+
+- Updated parsing list to support the first line to be a list item
+
 ## Version 1.6
 
 - Rename interface to Hero
