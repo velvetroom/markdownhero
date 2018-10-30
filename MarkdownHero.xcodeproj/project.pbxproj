@@ -26,7 +26,7 @@
 		DAB309AC2125603B00A427D3 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB309AB2125603B00A427D3 /* Header.swift */; };
 		DAB309AE2125636800A427D3 /* HeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB309AD2125636800A427D3 /* HeaderItem.swift */; };
 		DAB309B02125661100A427D3 /* TestHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB309AF2125661100A427D3 /* TestHeader.swift */; };
-		DACC8E3E212591C100729F7B /* TestsScaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC8E3D212591C100729F7B /* TestsScaping.swift */; };
+		DACC8E3E212591C100729F7B /* TestScaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC8E3D212591C100729F7B /* TestScaping.swift */; };
 		DACC8E40212592A500729F7B /* Escaping.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACC8E3F212592A500729F7B /* Escaping.swift */; };
 		DAED61B621245788000E7635 /* Interpreter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B521245788000E7635 /* Interpreter.swift */; };
 		DAED61B82124588F000E7635 /* StackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAED61B72124588F000E7635 /* StackItem.swift */; };
@@ -78,7 +78,7 @@
 		DAB309AB2125603B00A427D3 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DAB309AD2125636800A427D3 /* HeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderItem.swift; sourceTree = "<group>"; };
 		DAB309AF2125661100A427D3 /* TestHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHeader.swift; sourceTree = "<group>"; };
-		DACC8E3D212591C100729F7B /* TestsScaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestsScaping.swift; sourceTree = "<group>"; };
+		DACC8E3D212591C100729F7B /* TestScaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScaping.swift; sourceTree = "<group>"; };
 		DACC8E3F212592A500729F7B /* Escaping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Escaping.swift; sourceTree = "<group>"; };
 		DAED61B521245788000E7635 /* Interpreter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interpreter.swift; sourceTree = "<group>"; };
 		DAED61B72124588F000E7635 /* StackItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackItem.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 				DA4156C021254947002CDE8A /* TestImplementation.swift */,
 				DA4156C421255B28002CDE8A /* TestCleaner.swift */,
 				DAB309AF2125661100A427D3 /* TestHeader.swift */,
-				DACC8E3D212591C100729F7B /* TestsScaping.swift */,
+				DACC8E3D212591C100729F7B /* TestScaping.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -321,7 +321,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DACC8E3E212591C100729F7B /* TestsScaping.swift in Sources */,
+				DACC8E3E212591C100729F7B /* TestScaping.swift in Sources */,
 				DAB309B02125661100A427D3 /* TestHeader.swift in Sources */,
 				DA4156BD2125492F002CDE8A /* TestBold.swift in Sources */,
 				DA4156C521255B28002CDE8A /* TestCleaner.swift in Sources */,

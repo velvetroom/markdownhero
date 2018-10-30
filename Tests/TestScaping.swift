@@ -1,7 +1,7 @@
 import XCTest
 @testable import MarkdownHero
 
-class TestsScaping:XCTestCase {
+class TestScaping:XCTestCase {
     private var parser:Hero!
     
     override func setUp() {
