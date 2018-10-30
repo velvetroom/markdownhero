@@ -17,7 +17,7 @@ class TestItalics:XCTestCase {
                 .traitItalic)?.symbolicTraits, font.fontDescriptor.symbolicTraits)
             expect.fulfill()
         }
-        waitForExpectations(timeout:1, handler:nil)
+        waitForExpectations(timeout:2, handler:nil)
     }
     
     func testParseItalicsStar() {
